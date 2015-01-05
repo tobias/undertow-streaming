@@ -60,20 +60,29 @@
               <execution>
                 <phase>test</phase>
                 <goals>
-                  <goal>java</goal>
+                  <goal>exec</goal>
                 </goals>
                 <configuration>
-                  <mainClass>tcrawley.undertowstreaming.App</mainClass>
-                  <systemProperties>
-                    <systemProperty>
-                      <key>onThread</key>
-                      <value>${onThread}</value>
-                    </systemProperty>
-                    <systemProperty>
-                      <key>servlet</key>
-                      <value>${servlet}</value>
-                    </systemProperty>
-                  </systemProperties>
+                  <executable>java</executable>
+                  <!-- <mainClass>tcrawley.undertowstreaming.App</mainClass> -->
+                  <arguments>
+                    <argument>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</argument>
+                    <argument>-DonThread=${onThread}</argument>
+                    <argument>-Dservlet=${servlet}</argument>
+                    <argument>-classpath</argument>
+                    <classpath/>
+                    <argument>tcrawley.undertowstreaming.App</argument>
+                  </arguments>
+                  <!-- <systemProperties> -->
+                  <!--   <systemProperty> -->
+                  <!--     <key>onThread</key> -->
+                  <!--     <value>${onThread}</value> -->
+                  <!--   </systemProperty> -->
+                  <!--   <systemProperty> -->
+                  <!--     <key>servlet</key> -->
+                  <!--     <value>${servlet}</value> -->
+                  <!--   </systemProperty> -->
+                  <!-- </systemProperties> -->
                 </configuration>
               </execution>
             </executions>
