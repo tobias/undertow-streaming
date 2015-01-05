@@ -28,6 +28,8 @@ thread results in:
           at tcrawley.undertowstreaming.StreamingHandler$1.run(StreamingHandler.java:19)
           at java.lang.Thread.run(Thread.java:745)
 
+**FIXED by calling exchange.dispatch()**
+
 To run as a servlet, streaming from the request thread:
 
     mvn -Pservlet,run test
