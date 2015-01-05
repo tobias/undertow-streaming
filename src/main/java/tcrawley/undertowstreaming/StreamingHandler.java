@@ -10,6 +10,7 @@ import java.io.IOException;
 class StreamingHandler implements HttpHandler {
     @Override
     public void handleRequest(HttpServerExchange exchange) throws Exception {
+        exchange.dispatch();
         exchange.setPersistent(true);
         final Sender sender = exchange.getResponseSender();
         send(sender, "start\n");
